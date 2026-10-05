@@ -2,7 +2,7 @@
 
 Add a Markdown file to `src/events/<year>/<month>/`, using the year and month from the event start date.
 
-The file name becomes the URL slug, so `src/events/2026/10/fall-raid-night.md` is published at `/events/2026/10/fall-raid-night/`. 
+The file name becomes the URL slug, so `src/events/2026/10/fall-raid-night.md` is published at `/events/2026/10/fall-raid-night/`.
 
 ```markdown
 ---
@@ -25,7 +25,6 @@ Join the WILDLANDZ community for a run on Halloween Green county!
 The markdown file has event metadata, this is known as the "front matter", in between the `---` lines.
 
 The following fields are supported:
-
 
 | Field         | Required     | Notes                                                                                            |
 | ------------- | ------------ | ------------------------------------------------------------------------------------------------ |
@@ -71,4 +70,3 @@ imageAlt: Poster for An Industrious Affair, with the target building and date
 ```
 
 Download images and commit them. Do not link to Discord attachments, since those links expire.
-
