@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+---
+<article class="event">
+  <h1>{{ event.title }}</h1>
+  {% if event.host %}
+  <p class="host">
+    Hosted by
+    {% if event.hostLink %}<a href="{{ event.hostLink }}">{{ event.host }}</a>{% else %}{{ event.host }}{% endif %}
+  </p>
+  {% endif %}
+  {% if event.tags.length %}
+  <p class="tags">
+    {% for pill in event.tags | tagBadges(pills) %}{% include "tag-pill.njk" %} {% endfor %}
+  </p>
+  {% endif %}
+  <p class="when">{% eventWhen event %}</p>
+  {% if eventImage %}<figure class="event-image">{{ eventImage.html | safe }}</figure>{% endif %}
+  <div class="description">
+    {{ content | safe }}
+  </div>
+</article>

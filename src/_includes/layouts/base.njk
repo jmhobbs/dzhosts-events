@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% set meta = { site: site, pageUrl: page.url, title: title, description: description, event: event, image: eventImage } | pageMeta %}
+    <title>{{ meta.documentTitle }}</title>
+    <meta name="description" content="{{ meta.description }}">
+    <link rel="canonical" href="{{ meta.url }}">
+    <meta name="theme-color" content="{{ site.themeColor }}">
+    <meta property="og:type" content="{{ meta.type }}">
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:title" content="{{ meta.title }}">
+    <meta property="og:description" content="{{ meta.description }}">
+    <meta property="og:url" content="{{ meta.url }}">
+    {% if meta.image %}
+    <meta property="og:image" content="{{ meta.image.url }}">
+    <meta property="og:image:width" content="{{ meta.image.width }}">
+    <meta property="og:image:height" content="{{ meta.image.height }}">
+    <meta property="og:image:alt" content="{{ meta.image.alt }}">
+    {% endif %}
+    <meta name="twitter:card" content="{{ meta.twitterCard }}">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="alternate" type="text/calendar" title="{{ site.title }}" href="/events.ics">
+    <script type="module" src="/js/local-time.js"></script>
+  </head>
+  <body>
+    <header>
+      <a class="site-title" href="/">{{ site.title }}</a>
+      <nav>
+        <a href="/">Upcoming</a>
+        <a href="/events.ics">Subscribe (ICS)</a>
+        <a href="/why">Why?</a>
+        <a href="https://discord.gg/am8aTud63c" target="_blank" rel="noopener">Discord</a>
+      </nav>
+    </header>
+    <main>
+      {{ content | safe }}
+    </main>
+    <footer>
+      <p>Got an event? Submit it on <a href="{{ site.discordUrl }}">Discord</a>.</p>
+      <p><a href="https://github.com/jmhobbs/dzhosts-events" target="_blank" rel="noopener">View on GitHub</a></p>
+      <p class="built">
+        <small>Last built {% localTime build.now %}</small>
+      </p>
+    </footer>
+  </body>
+</html>

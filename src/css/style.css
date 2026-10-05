@@ -1,0 +1,150 @@
+:root {
+  --bg: #15171a;
+  --panel: #1f2226;
+  --text: #e2e2dc;
+  --muted: #9a9c94;
+  --accent: #ff4444;
+  --border: #33373c;
+  --content-width: 60rem;
+  --gutter: 1rem;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: var(--accent);
+}
+
+/* Borders span the page, content lines up with main. */
+header,
+footer {
+  padding-block: var(--gutter);
+  padding-inline: max(
+    var(--gutter),
+    calc((100% - var(--content-width)) / 2 + var(--gutter))
+  );
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--border);
+}
+
+.site-title {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: var(--gutter);
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px solid var(--border);
+}
+
+footer p {
+  margin: 0;
+}
+
+blockquote {
+  border-left: 5px solid var(--border);
+  padding-left: 1em;
+  margin-left: 0;
+}
+
+.host,
+.built {
+  color: var(--muted);
+}
+
+.event-image {
+  margin: 1rem 0;
+}
+
+/* Posters are often tall, so cap the height and keep the aspect ratio. */
+.event-image img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 40rem;
+}
+
+.event-list {
+  list-style: none;
+  padding: 0;
+}
+
+.event-list li {
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+}
+
+/* An h2 for heading order under the page h1, sized like an h3. */
+.event-title {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+  align-items: baseline;
+  margin: 0 0 0.25rem;
+  font-size: 1.17em;
+}
+
+.event-list .when {
+  margin: 0;
+}
+
+.pill {
+  --pill-color: var(--muted);
+  padding: 0 0.4rem;
+  border: 1px solid var(--pill-color);
+  border-radius: 999px;
+  color: var(--pill-color);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.pill-highlighted {
+  --pill-color: var(--accent);
+  font-weight: 600;
+}
+
+.event-list .summary {
+  margin: 0.5rem 0 0;
+}

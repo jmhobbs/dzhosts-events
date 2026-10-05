@@ -1,0 +1,23 @@
+---
+layout: layouts/base.njk
+---
+{% set upcomingEvents = collections.events | upcoming(build.now) %}
+<h1>Upcoming events</h1>
+{% if upcomingEvents.length %}
+<ul class="event-list">
+  {% for event in upcomingEvents %}
+  <li>
+    <h2 class="event-title">
+      {% for pill in event.tags | tagBadges(pills) %}
+      {% if pill.highlighted %}{% include "tag-pill.njk" %}{% endif %}
+      {% endfor %}
+      <a href="{{ event.url }}">{{ event.title }}</a>
+    </h2>
+    <p class="when">{% eventListWhen event %}</p>
+    {% if event.description %}<p class="summary">{{ event.description }}</p>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No upcoming events.</p>
+{% endif %}

@@ -1,0 +1,21 @@
+{
+  "name": "dzhost-events",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Community calendar for DayZ events across all servers.",
+  "type": "module",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "test": "npm run test:ahead-of-utc && npm run test:behind-utc",
+    "test:ahead-of-utc": "TZ=Pacific/Auckland node --test 'test/**/*.test.js'",
+    "test:behind-utc": "TZ=America/Los_Angeles node --test 'test/**/*.test.js'",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@11ty/eleventy-img": "^7.0.0",
+    "prettier": "^3.9.9"
+  }
+}
