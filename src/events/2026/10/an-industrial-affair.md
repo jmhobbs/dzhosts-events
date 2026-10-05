@@ -1,5 +1,5 @@
 ---
-title: An Industrious Affair
+title: An Industrial Affair
 host: Natural Selection
 hostLink: https://discord.com/invite/MpDVVc6wKn
 description: Capture the Objective event.  Take control of the target building and hold it until server restart to win!
