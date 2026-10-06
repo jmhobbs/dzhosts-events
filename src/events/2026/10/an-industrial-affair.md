@@ -6,6 +6,8 @@ description: Capture the Objective event.  Take control of the target building a
 tags: [XBOX]
 start: "2026-10-10T20:00Z"
 end: "2026-10-11T00:00Z"
+image: an-industrial-affair.webp
+imageAlt: Solos and Dueos will be battling it out for control of the target building.
 ---
 
 Time for some hard work and some heavy hitting in this Capture the Objective event. The task is simple: take control of the target building (this will be announced in the discord at the start of the event). Those holding the structure at the server restart will be declared the winners!
