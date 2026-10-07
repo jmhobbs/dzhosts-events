@@ -11,7 +11,8 @@
     "test:ahead-of-utc": "TZ=Pacific/Auckland node --test 'test/**/*.test.js'",
     "test:behind-utc": "TZ=America/Los_Angeles node --test 'test/**/*.test.js'",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "discord:sync": "node bin/discord-sync.js"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",

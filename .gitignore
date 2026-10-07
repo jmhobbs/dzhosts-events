@@ -1,3 +1,5 @@
 node_modules/
 _site/
 plan_*.md
+.discord-sync-state/
+.envrc
