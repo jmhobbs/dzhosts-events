@@ -1,12 +1,17 @@
 import { validateEvent, isUpcoming, sortByStart } from "./lib/event-dates.js";
 import { buildIcsCalendar } from "./lib/ics.js";
-import { tagBadges } from "./lib/pills.js";
+import {
+  eventPlatform,
+  groupEventsByPlatform,
+  tagBadges,
+} from "./lib/platforms.js";
 import { pageMeta } from "./lib/page-meta.js";
 import {
   eventWhenHtml,
   eventListWhenHtml,
   localTimeHtml,
 } from "./lib/event-when.js";
+import platformDefinitions from "./src/_data/platforms.json" with { type: "json" };
 
 const EVENT_GLOB = "src/events/**/*.md";
 
@@ -18,10 +23,18 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addCollection("events", (collectionApi) =>
     sortByStart(
-      collectionApi.getFilteredByGlob(EVENT_GLOB).map((item) => ({
-        ...validateEvent(item.data, item.inputPath),
-        url: item.url,
-      })),
+      collectionApi.getFilteredByGlob(EVENT_GLOB).map((item) => {
+        const event = validateEvent(item.data, item.inputPath);
+        return {
+          ...event,
+          platform: eventPlatform(
+            event.tags,
+            platformDefinitions,
+            item.inputPath,
+          ),
+          url: item.url,
+        };
+      }),
     ),
   );
 
@@ -29,6 +42,7 @@ export default function (eleventyConfig) {
     events.filter((event) => isUpcoming(event, now)),
   );
   eleventyConfig.addFilter("tagBadges", tagBadges);
+  eleventyConfig.addFilter("groupByPlatform", groupEventsByPlatform);
   eleventyConfig.addFilter("pageMeta", pageMeta);
   eleventyConfig.addFilter("icsCalendar", (events, site, now) =>
     buildIcsCalendar({

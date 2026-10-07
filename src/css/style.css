@@ -116,7 +116,13 @@ blockquote {
   border: 1px solid var(--border);
 }
 
-/* An h2 for heading order under the page h1, sized like an h3. */
+.platform-heading {
+  --platform-color: var(--border);
+  margin: 1.5rem 0 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid var(--platform-color);
+}
+
 .event-title {
   display: flex;
   flex-wrap: wrap;

@@ -11,7 +11,7 @@ layout: layouts/base.njk
   {% endif %}
   {% if event.tags.length %}
   <p class="tags">
-    {% for pill in event.tags | tagBadges(pills) %}{% include "tag-pill.njk" %} {% endfor %}
+    {% for pill in event.tags | tagBadges(platforms) %}{% include "tag-pill.njk" %} {% endfor %}
   </p>
   {% endif %}
   <p class="when">{% eventWhen event %}</p>

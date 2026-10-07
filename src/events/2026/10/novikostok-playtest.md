@@ -1,5 +1,6 @@
 ---
 title: Novikostok Playtest
+tags: [PC]
 image: novikostok-playtest.webp
 imageAlt: Poster for Novikostok Playtest Episode 2
 description: A week of open testing on the new Esseker build. Report bugs in the Discord.

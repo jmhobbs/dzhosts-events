@@ -2,7 +2,7 @@
 title: No Woman Left Behind (All Female DayZ Charity Event)
 host: Arriana
 hostLink: https://discord.com/invite/KeeyRyU4Yn
-tags: [Charity]
+tags: [PC]
 start: "2026-10-11T14:00Z"
 end: "2026-10-11T18:00Z"
 ---

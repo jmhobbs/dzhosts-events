@@ -9,6 +9,7 @@ The file name becomes the URL slug, so `src/events/2026/10/fall-raid-night.md` i
 title: Spooky Ohio Community Run
 host: WILDLANDZ
 description: 2 Spooky 4 U
+tags: [PC]
 start: "2026-10-17T19:00:00-05:00"
 end: "2026-10-17T23:00:00-05:00"
 ---
@@ -26,19 +27,21 @@ The markdown file has event metadata, this is known as the "front matter", in be
 
 The following fields are supported:
 
-| Field         | Required     | Notes                                                                                            |
-| ------------- | ------------ | ------------------------------------------------------------------------------------------------ |
-| `title`       | yes          | Event name.                                                                                      |
-| `start`       | yes          | Quoted ISO 8601 time with a UTC offset, or a quoted date for an all-day event.                   |
-| `end`         | no           | Same kind as `start`. Must not be before `start`. For all-day events, the last day.              |
-| `host`        | no           | Community or server running the event.                                                           |
-| `hostLink`    | no           | http or https URL. Links the host name on the event page. Requires `host`.                       |
-| `image`       | no           | Image file name in the same folder as the event. `.jpg`, `.jpeg`, `.png` or `.webp`.             |
-| `imageAlt`    | with `image` | Text describing the image, including any text on a poster.                                       |
-| `tags`        | no           | List of tags. All tags show on the event page. If an XBOX event, ensure to include the XBOX tag. |
-| `description` | no           | One or two sentences shown on the upcoming list.                                                 |
+| Field         | Required     | Notes                                                                                                                  |
+| ------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| `title`       | yes          | Event name.                                                                                                            |
+| `start`       | yes          | Quoted ISO 8601 time with a UTC offset, or a quoted date for an all-day event.                                         |
+| `end`         | no           | Same kind as `start`. Must not be before `start`. For all-day events, the last day.                                    |
+| `host`        | no           | Community or server running the event.                                                                                 |
+| `hostLink`    | no           | http or https URL. Links the host name on the event page. Requires `host`.                                             |
+| `image`       | no           | Image file name in the same folder as the event. `.jpg`, `.jpeg`, `.png` or `.webp`.                                   |
+| `imageAlt`    | with `image` | Text describing the image, including any text on a poster.                                                             |
+| `tags`        | yes          | List of tags. Must include exactly one platform tag: `PC`, `XBOX`, `PS5` or `Switch`. All tags show on the event page. |
+| `description` | no           | One or two sentences shown on the upcoming list.                                                                       |
 
 Put server details, rules and links in the body.
+
+The home page groups events by platform. The build will fail if an event has no platform tag, or has more than one.
 
 ### Dates & Times
 

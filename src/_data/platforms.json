@@ -1,0 +1,22 @@
+[
+  {
+    "tag": "PC",
+    "label": "PC",
+    "color": "#ff201e"
+  },
+  {
+    "tag": "XBOX",
+    "label": "XBOX",
+    "color": "#5dc21e"
+  },
+  {
+    "tag": "PS5",
+    "label": "PS5",
+    "color": "#ff4500"
+  },
+  {
+    "tag": "Switch",
+    "label": "Switch",
+    "color": "#ff69b4"
+  }
+]

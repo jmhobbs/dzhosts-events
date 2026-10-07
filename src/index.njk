@@ -1,23 +1,21 @@
 ---
 layout: layouts/base.njk
 ---
-{% set upcomingEvents = collections.events | upcoming(build.now) %}
+{% set platformGroups = collections.events | upcoming(build.now) | groupByPlatform(platforms) %}
 <h1>Upcoming events</h1>
-{% if upcomingEvents.length %}
-<ul class="event-list">
-  {% for event in upcomingEvents %}
-  <li>
-    <h2 class="event-title">
-      {% for pill in event.tags | tagBadges(pills) %}
-      {% if pill.highlighted %}{% include "tag-pill.njk" %}{% endif %}
-      {% endfor %}
-      <a href="{{ event.url }}">{{ event.title }}</a>
-    </h2>
-    <p class="when">{% eventListWhen event %}</p>
-    {% if event.description %}<p class="summary">{{ event.description }}</p>{% endif %}
-  </li>
-  {% endfor %}
-</ul>
+{% for group in platformGroups %}
+<section id="{{ group.platform.tag | slugify }}">
+  <h2 class="platform-heading"{% if group.platform.color %} style="--platform-color: {{ group.platform.color }}"{% endif %}>{{ group.platform.label }}</h2>
+  <ul class="event-list">
+    {% for event in group.events %}
+    <li>
+      <h3 class="event-title"><a href="{{ event.url }}">{{ event.title }}</a></h3>
+      <p class="when">{% eventListWhen event %}</p>
+      {% if event.description %}<p class="summary">{{ event.description }}</p>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
 {% else %}
 <p>No upcoming events.</p>
-{% endif %}
+{% endfor %}
