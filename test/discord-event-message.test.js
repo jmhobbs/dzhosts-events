@@ -76,3 +76,8 @@ test("eventMessage adds the image when there is one", () => {
   );
   assert.deepEqual(message.embeds[0].image, { url: "https://x/img.jpeg" });
 });
+
+test("eventMessage leaves out the platform since each platform has its own channel", () => {
+  const message = eventMessage(feedEvent());
+  assert.equal(field(message, "Platform"), undefined);
+});
