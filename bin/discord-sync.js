@@ -3,6 +3,7 @@ import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { parseArgs } from "node:util";
 import { emptyState } from "../lib/discord/apply-sync.js";
+import { emptyChannelMessage } from "../lib/discord/empty-channel-message.js";
 import { loadFeed, upcomingFeedEvents } from "../lib/discord/feed-source.js";
 import { platformChannels } from "../lib/discord/platform-channels.js";
 import { syncPlatforms } from "../lib/discord/sync-platforms.js";
@@ -46,6 +47,10 @@ async function main() {
     readState,
     writeState,
     createClient: (webhookUrl) => createWebhookClient({ webhookUrl }),
+    emptyChannelMessage: emptyChannelMessage({
+      submissionsUrl: site.discordSubmissionsUrl,
+      themeColor: site.themeColor,
+    }),
     dryRun: options["dry-run"],
     log: (line) => console.log(line),
   });

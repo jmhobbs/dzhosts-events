@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { syncPlatforms } from "../lib/discord/sync-platforms.js";
 import { emptyState } from "../lib/discord/apply-sync.js";
+import { EMPTY_CHANNEL_MESSAGE_ID } from "../lib/discord/empty-channel-message.js";
 
 function feedEvent(id, tag) {
   return {
@@ -54,6 +55,7 @@ function harness({ channels, states = {}, clientOptions = {} }) {
       clients[webhookUrl] = fakeClient(webhookUrl, clientOptions[webhookUrl]);
       return clients[webhookUrl];
     },
+    emptyChannelMessage: { embeds: [{ title: "No Upcoming Events" }] },
     dryRun: false,
     log: (line) => logs.push(line),
   };
@@ -104,9 +106,11 @@ test("syncPlatforms moves an event that changed platform", async () => {
     },
   });
   await syncPlatforms({ ...options, feedEvents: [feedEvent("/a/", "XBOX")] });
-  assert.deepEqual(clients.pc.calls, ["delete 9"]);
+  assert.deepEqual(clients.pc.calls, ["delete 9", "create"]);
   assert.deepEqual(clients.xbox.calls, ["create"]);
-  assert.deepEqual(written.PC.messages, {});
+  assert.deepEqual(Object.keys(written.PC.messages), [
+    EMPTY_CHANNEL_MESSAGE_ID,
+  ]);
 });
 
 test("syncPlatforms keeps going after one platform fails", async () => {
@@ -133,4 +137,29 @@ test("syncPlatforms makes no calls and writes no state on a dry run", async () =
   assert.deepEqual(clients.pc.calls, []);
   assert.deepEqual(written, {});
   assert.ok(logs.some((line) => /create\s+\/a\//.test(line)));
+});
+
+test("syncPlatforms posts the empty channel message when a platform has no events", async () => {
+  const { clients, written, options } = harness({ channels: [PC, XBOX] });
+  await syncPlatforms({ ...options, feedEvents: [feedEvent("/a/", "PC")] });
+  assert.deepEqual(Object.keys(written.PC.messages), ["/a/"]);
+  assert.deepEqual(clients.xbox.calls, ["create"]);
+  assert.deepEqual(Object.keys(written.XBOX.messages), [
+    EMPTY_CHANNEL_MESSAGE_ID,
+  ]);
+});
+
+test("syncPlatforms deletes the empty channel message once an event is added", async () => {
+  const { clients, written, options } = harness({
+    channels: [PC],
+    states: {
+      PC: {
+        webhookId: "pc",
+        messages: { [EMPTY_CHANNEL_MESSAGE_ID]: { messageId: "9", hash: "h" } },
+      },
+    },
+  });
+  await syncPlatforms({ ...options, feedEvents: [feedEvent("/a/", "PC")] });
+  assert.deepEqual(clients.pc.calls, ["delete 9", "create"]);
+  assert.deepEqual(Object.keys(written.PC.messages), ["/a/"]);
 });

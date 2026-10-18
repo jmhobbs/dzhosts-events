@@ -32,6 +32,7 @@ Run it again any time. Events that have not changed are left alone. Run it at le
 - If one platform fails, the others still sync and the command exits with an error.
 - `.discord-sync-state/<tag>.json` maps each event in that channel to its Discord message id and a hash of the message. The folder is not committed.
 - Times use Discord timestamps, so each reader sees their own local time. All-day events show the dates as written.
+- A channel with no upcoming events gets one "No Upcoming Events" message that links to `#event-submissions`. The link is `discordSubmissionsUrl` in `src/_data/site.json`. The message is deleted when the channel's next event is posted.
 - Messages cannot ping `@everyone`, roles or users.
 
 ## Options
