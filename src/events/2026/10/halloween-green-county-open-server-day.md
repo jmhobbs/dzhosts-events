@@ -6,8 +6,9 @@ description: Join the WILDLANDZ AmbassadorZ, ModZ & AdminZ for a fun-filled all-
 tags: [PC]
 start: "2026-10-11T11:00Z"
 image: halloween-green-county-open-server-day.png
-imageAlt: DayZ in the dark! 
+imageAlt: DayZ in the dark!
 ---
+
 🎃 HALLOWEEN GREEN COUNTY — OPEN SERVER DAY 🎃
 
 Join the WILDLANDZ AmbassadorZ, ModZ & AdminZ for a fun-filled all-day Open Server Day on the NEW Halloween Green County server!
