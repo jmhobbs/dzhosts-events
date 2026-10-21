@@ -2,16 +2,18 @@
 title: Popsys Birthday Stream Snipe
 host: Popsy
 hostLink: https://discord.gg/mrKXk3fFtR
-description: Join the WILDLANDZ AmbassadorZ, ModZ & AdminZ for a fun-filled all-day Open Server Day on the NEW Halloween Green County server!
+description: Come join us in celebrating Popsys 40th birthday with a stream snipe event.
 tags: [PC]
 start: "2026-11-01T16:00Z"
 ---
 
-Join us in celebrating Popsy's 40th birthday!
+Come join us in celebrating Popsys 40th birthday with a stream snipe event.
 
-Four bodyguards. Five scooters. One emotional support stick.
+Four bodyguards, Five Scooters and One emotional support stick.
 
-Whoever gets the most kills on Popsy wins a $50 Steam gift card!!
+The player who gets the most kills of Popsy at the end will win a $50 Steam Gift Card.
+
+Server details will be announced in advance.
 
 ## Links
 
