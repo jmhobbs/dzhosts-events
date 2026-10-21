@@ -21,4 +21,5 @@ But this won't be a simple rescue. The kidnappers are armed, organised, and prep
 
 ### Links
 
+- [Sign Up Form](https://docs.google.com/forms/d/e/1FAIpQLSeT-XYakZqoaJfZlaOyO17ETo8QKt5Bac0HjlB6KFxalzRZ7Q/viewform)
 - [Discord](https://discord.com/invite/KeeyRyU4Yn)
